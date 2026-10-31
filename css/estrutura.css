@@ -1,0 +1,139 @@
+/* =========================================================
+   Recanto El Shaday — Seção 3: estrutura, ocasiões e diária
+   Usa os tokens de :root (hero.css) e .btn do hero
+   ========================================================= */
+.est{
+  --e-ink:#06232b;--e-body:#3d5d66;--e-teal:#0b8fa3;--e-teal-deep:#0a5f72;--e-aqua:var(--aqua-2,#2cc4d6);
+  position:relative;isolation:isolate;overflow:hidden;color:var(--e-ink);font-family:var(--ff-body);
+  padding:clamp(40px,6vw,88px) var(--pad) clamp(72px,9vw,128px);
+  background:
+    radial-gradient(50% 30% at 100% 20%, rgba(44,196,214,.14), transparent 70%),
+    linear-gradient(#f6f1e7 0,#f1f7f4 40%,#f6f1e7 100%);
+}
+.est *{box-sizing:border-box}
+.est h2,.est h3,.est p,.est ul,.est figure,.est dl,.est dd{margin:0;padding:0}
+.est ul{list-style:none}
+.est__wrap{position:relative;max-width:1320px;margin:0 auto}
+.est__grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+
+.est__eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:20px;font-size:.74rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--e-teal-deep)}
+.est__eyebrow::before{content:"";width:46px;height:1px;background:linear-gradient(90deg,var(--e-teal),transparent)}
+.est__title{font-family:var(--ff-display);font-weight:400;font-variation-settings:"opsz" 144;font-size:clamp(2.3rem,5.2vw,4.7rem);line-height:1;letter-spacing:-.028em;max-width:19ch}
+.est__title em,.est h3 em{font-style:italic;font-weight:500;color:var(--e-teal)}
+.est__title em{background:linear-gradient(100deg,#0b8fa3 5%,#2cc4d6 55%,#0a5f72 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.06em}
+.est__lead{font-size:clamp(1rem,1.15vw,1.12rem);line-height:1.7;color:var(--e-body);max-width:38ch}
+
+/* ---------- Cabeçalho ---------- */
+.est__head{align-items:end;row-gap:24px}
+.est__head>div:first-child{grid-column:1 / span 8}
+.est__head>.est__lead{grid-column:9 / span 4;padding-bottom:.5rem}
+
+/* ---------- Números: piscina + capacidade ---------- */
+.est__nums{margin-top:clamp(40px,5.5vw,76px);align-items:stretch;row-gap:24px}
+.est__pool{grid-column:1 / span 7;position:relative;padding:clamp(24px,3.4vw,46px);border-radius:42px 42px 42px 140px;color:var(--foam,#e9fbfd);overflow:hidden;
+  background:radial-gradient(80% 90% at 100% 0%,rgba(44,196,214,.42),transparent 62%),linear-gradient(150deg,#0a4a5c 0%,#06303c 58%,#04171d 100%);
+  box-shadow:0 50px 90px -52px rgba(4,23,29,.9)}
+.est__label{font-size:.72rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--aqua,#5fe3ef)}
+.est__big{font-family:var(--ff-display);font-weight:400;font-variation-settings:"opsz" 144;line-height:.9;letter-spacing:-.04em}
+.est__pool .est__big{display:block;margin-top:14px;font-size:clamp(3.6rem,9vw,8rem)}
+.est__big small{font-size:.34em;font-style:italic;letter-spacing:0;color:var(--aqua,#5fe3ef);margin-left:.15em}
+.est__pool-meta{display:flex;flex-wrap:wrap;gap:6px 26px;margin-top:14px;font-size:1rem;color:var(--muted,rgba(233,251,253,.82))}
+.est__pool-meta b{font-family:var(--ff-display);font-weight:500;font-size:1.25rem;color:#fff}
+.est__diagram{display:block;width:100%;max-width:520px;height:auto;margin-top:clamp(20px,3vw,34px);overflow:visible}
+.est__diagram .water{fill:rgba(95,227,239,.2);stroke:var(--aqua,#5fe3ef);stroke-width:1.5}
+.est__diagram .wave{fill:none;stroke:var(--aqua,#5fe3ef);stroke-width:1.2;stroke-linecap:round;stroke-opacity:.7;stroke-dasharray:4 8;animation:eflow 30s linear infinite}
+.est__diagram .dim{stroke:var(--sand,#f2d9a6);stroke-width:1;fill:none}
+.est__diagram text{font-family:var(--ff-body);font-size:11px;font-weight:700;letter-spacing:.12em;fill:var(--sand,#f2d9a6)}
+@keyframes eflow{to{stroke-dashoffset:-200}}
+
+.est__cap{grid-column:8 / span 5;display:flex;flex-direction:column;justify-content:space-between;gap:24px;padding:clamp(6px,1vw,14px) 0 0 clamp(0px,2vw,28px)}
+.est__cap-item{position:relative;padding-bottom:22px;border-bottom:1px dashed rgba(11,143,163,.45)}
+.est__cap-item:last-of-type{border-bottom:0}
+.est__cap .est__label{color:var(--e-teal-deep)}
+.est__cap .est__big{display:flex;align-items:baseline;gap:12px;margin-top:8px;font-size:clamp(4.4rem,9vw,8.4rem);
+  background:linear-gradient(100deg,#0a5f72,#0b8fa3 55%,#2cc4d6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.est__cap .est__big small{-webkit-text-fill-color:var(--e-body);color:var(--e-body);font-size:.2em;font-style:normal;font-family:var(--ff-body);font-weight:700;letter-spacing:.18em;text-transform:uppercase;line-height:1.3}
+.est__cap-item p{margin-top:6px;font-size:.98rem;line-height:1.55;color:var(--e-body);max-width:30ch}
+.est__cap-note{font-family:var(--ff-display);font-style:italic;font-size:1.15rem;line-height:1.4;color:var(--e-teal-deep)}
+
+/* ---------- Estrutura: índice + fotos ---------- */
+.est__struct{margin-top:clamp(64px,9vw,128px);align-items:center;row-gap:36px}
+.est__struct-text{grid-column:1 / span 7}
+.est h3{font-family:var(--ff-display);font-weight:500;font-variation-settings:"opsz" 96;font-size:clamp(1.9rem,3.6vw,3.2rem);line-height:1.04;letter-spacing:-.02em}
+.est .est__index{margin-top:clamp(22px,3vw,36px);display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(20px,3vw,44px);counter-reset:i}
+.est__index li{counter-increment:i;display:flex;align-items:baseline;gap:14px;padding:15px 0;border-top:1px solid rgba(11,143,163,.28);font-size:1.02rem;font-weight:600;line-height:1.3}
+.est__index li::before{content:counter(i,decimal-leading-zero);flex:none;font-family:var(--ff-display);font-style:italic;font-weight:400;font-size:.95rem;color:var(--e-teal)}
+.est__index li span{display:block;margin-top:2px;font-weight:500;font-size:.88rem;color:var(--e-body)}
+.est__index li b{font-weight:700}
+
+.est__photos{grid-column:8 / span 5;position:relative;aspect-ratio:1/1.12}
+.est__fig{position:absolute;border-radius:26px;background:#dff3f5}
+.est__fig img{display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit;box-shadow:0 40px 70px -38px rgba(6,35,43,.6)}
+.est__fig::after{content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;border:1.5px solid var(--e-aqua);opacity:.75;transform:translate(12px,12px)}
+.est__fig--a{left:0;top:0;width:62%;aspect-ratio:382/512;border-radius:130px 26px 26px 26px}
+.est__fig--b{right:0;bottom:0;width:50%;aspect-ratio:281/465;border-radius:26px 26px 110px 26px;z-index:2}
+.est__fig--b::after{transform:translate(-12px,12px)}
+.est__fig figcaption{position:absolute;left:12px;bottom:12px;z-index:3;padding:7px 13px;border-radius:999px;font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--foam,#e9fbfd);background:rgba(4,23,29,.55);border:1px solid rgba(190,245,250,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+
+/* ---------- Ocasiões ---------- */
+.est__occ{margin-top:clamp(72px,10vw,150px);text-align:left}
+.est__occ-words{margin-top:clamp(18px,3vw,32px);display:flex;flex-wrap:wrap;align-items:baseline;gap:0 .55em;font-family:var(--ff-display);font-weight:400;font-variation-settings:"opsz" 144;font-size:clamp(2.1rem,5.6vw,5rem);line-height:1.18;letter-spacing:-.025em}
+.est__occ-words li{display:inline-flex;align-items:baseline;gap:.55em}
+.est__occ-words li:not(:last-child)::after{content:"";width:.34em;height:.34em;border-radius:50%;border:1.5px solid var(--e-aqua);transform:translateY(-.12em)}
+.est__occ-words li:nth-child(even){font-style:italic;color:var(--e-teal)}
+.est__occ-words li:last-child{background:linear-gradient(100deg,#0b8fa3,#2cc4d6 60%,#0a5f72);-webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic;padding-right:.06em}
+
+/* ---------- Diária + convite ---------- */
+.est__price{margin-top:clamp(64px,9vw,128px);position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:center;row-gap:30px;
+  padding:clamp(32px,5vw,72px) clamp(24px,4.4vw,64px);border-radius:140px 42px 42px 42px;color:var(--ink,#f4fdff);overflow:hidden;isolation:isolate;
+  background:radial-gradient(70% 90% at 8% 0%,rgba(44,196,214,.4),transparent 62%),radial-gradient(60% 70% at 100% 100%,rgba(95,227,239,.14),transparent 65%),linear-gradient(150deg,#0a4a5c 0%,#06303c 55%,#04171d 100%);
+  box-shadow:0 50px 90px -50px rgba(4,23,29,.85)}
+.est__price::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.55;pointer-events:none;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 200' preserveAspectRatio='none'><path d='M-10 120C100 80 200 160 300 120S500 80 610 120' fill='none' stroke='%235fe3ef' stroke-opacity='.45' stroke-width='1' stroke-dasharray='5 11'/><path d='M-10 150C100 110 200 190 300 150S500 110 610 150' fill='none' stroke='%235fe3ef' stroke-opacity='.25' stroke-width='1' stroke-dasharray='5 11'/></svg>") center bottom/100% 60% no-repeat}
+.est__price-main{grid-column:1 / span 6}
+.est__amount{display:flex;align-items:flex-start;gap:.12em;margin-top:12px;font-family:var(--ff-display);font-weight:400;font-variation-settings:"opsz" 144;line-height:.9;letter-spacing:-.04em;font-size:clamp(4.4rem,10vw,9rem)}
+.est__amount sup{font-size:.3em;margin-top:.28em;font-style:italic;color:var(--aqua,#5fe3ef);letter-spacing:0}
+.est__hours{display:inline-flex;align-items:center;gap:12px;margin-top:18px;padding:10px 18px;border-radius:999px;border:1px solid rgba(190,245,250,.3);background:rgba(95,227,239,.1);font-weight:700;font-size:.95rem;letter-spacing:.04em}
+.est__hours i{width:8px;height:8px;border-radius:50%;background:var(--aqua,#5fe3ef);box-shadow:0 0 0 4px rgba(95,227,239,.25)}
+.est__cta{grid-column:8 / span 5;display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+.est__cta h3{color:var(--foam,#e9fbfd);font-size:clamp(1.6rem,2.6vw,2.3rem)}
+.est__cta h3 em{color:var(--aqua,#5fe3ef)}
+.est__cta p{color:var(--muted,rgba(233,251,253,.82));line-height:1.65;max-width:36ch}
+.est .btn{color:#032229}
+.est .btn:focus-visible{outline:2px solid var(--sand,#f2d9a6);outline-offset:4px}
+
+/* ---------- Revelação ---------- */
+.est.is-ready [data-e]{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease,ease) var(--ed,0s),transform 1s var(--ease,ease) var(--ed,0s)}
+.est.is-ready [data-e].is-in{opacity:1;transform:none}
+
+@media (max-width:1020px){
+  .est__head>div:first-child,.est__head>.est__lead{grid-column:1 / -1}
+  .est__pool{grid-column:1 / -1}
+  .est__cap{grid-column:1 / -1;flex-direction:row;flex-wrap:wrap;padding:0}
+  .est__cap-item{flex:1 1 220px;border-bottom:0}
+  .est__cap-note{flex-basis:100%}
+  .est__struct-text{grid-column:1 / -1}
+  .est__photos{grid-column:3 / span 8}
+  .est__price-main,.est__cta{grid-column:1 / -1}
+}
+@media (max-width:680px){
+  .est__title{max-width:none}
+  .est__pool{border-radius:30px 30px 30px 80px}
+  .est__cap{flex-direction:column;gap:18px}
+  .est__cap-item{flex:none;padding-bottom:18px;border-bottom:1px dashed rgba(11,143,163,.45)}
+  .est__index{grid-template-columns:1fr}
+  .est__photos{grid-column:1 / -1;aspect-ratio:1/1.2;margin-right:12px}
+  .est__fig::after{transform:translate(8px,8px)}
+  .est__fig--b::after{transform:translate(-8px,8px)}
+  .est__fig--a{border-radius:90px 22px 22px 22px}
+  .est__fig--b{border-radius:22px 22px 80px 22px}
+  .est__occ-words{gap:0 .4em}
+  .est__occ-words li{gap:.4em}
+  .est__occ-words li:not(:last-child)::after{width:.28em;height:.28em}
+  .est__price{border-radius:80px 28px 28px 28px;padding-top:44px}
+  .est .btn{width:100%;justify-content:space-between;padding:18px 24px}
+}
+@media (prefers-reduced-motion:reduce){
+  .est.is-ready [data-e]{opacity:1;transform:none;transition:none}
+  .est__diagram .wave{animation:none}
+}

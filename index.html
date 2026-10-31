@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Recanto El Shaday — Chácara de lazer em Guarapuava–PR</title>
+  <meta name="description" content="Piscina, churrasqueira e lazer em um refúgio em Guarapuava–PR. Planeje sua visita à Chácara Recanto El Shaday.">
+  <meta name="theme-color" content="#06232b">
+  <link rel="icon" type="image/png" href="assets/img/logo-192.png">
+  <link rel="apple-touch-icon" href="assets/img/logo-192.png">
+  <link rel="preload" as="image" href="assets/img/poster.jpg">
+  <link rel="preload" as="image" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/momento.css">
+  <link rel="stylesheet" href="css/estrutura.css">
+  <link rel="stylesheet" href="css/reservas.css">
+  <link rel="stylesheet" href="css/efeitos.css">
+  <link rel="stylesheet" href="css/acabamento.css">
+  <link rel="stylesheet" href="css/reserva-modal.css">
+  <script>
+    /* Etapa 5 — marca a página para o loader; sem isso (ou com movimento reduzido) o loader nem aparece */
+    (function (d) {
+      try {
+        if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        d.classList.add('js-loader', 'has-loader');
+        setTimeout(function () {
+          d.classList.remove('has-loader');
+          var l = d.querySelector('.loader'); if (l) l.parentNode.removeChild(l);
+        }, 9000);
+      } catch (e) {}
+    })(document.documentElement);
+  </script>
+</head>
+<body>
+
+<!-- ETAPA 5 — Tela de carregamento (usa a marca existente do site: símbolo + nome em texto) -->
+<div class="loader" id="loader" role="status" aria-live="polite" aria-label="Carregando o site do Recanto El Shaday">
+  <div class="loader__inner">
+    <div class="loader__brand">
+      <img class="loader__logo" src="assets/img/logo.png" width="640" height="635" alt="Recanto El Shaday">
+    </div>
+    <svg class="loader__wave" viewBox="0 0 240 40" aria-hidden="true">
+      <path class="w3" d="M0 20q15-10 30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0"/>
+      <path class="w2" d="M0 20q15-14 30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0"/>
+      <path class="w1" d="M0 20q15-18 30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0"/>
+    </svg>
+    <p class="loader__tag">Sua diversão começa aqui.</p>
+  </div>
+</div>
+
+<!-- ==========================================================
+     ETAPA 1 — HERO
+     Seção autocontida: <header class="site-header"> + <section class="hero">
+     Para integrar ao site final, copie esses dois blocos, o css/hero.css,
+     o js/hero.js e a pasta assets/.
+     ========================================================== -->
+
+<header class="site-header" data-reveal style="--d:.1s">
+  <a class="brand" href="#inicio" aria-label="Recanto El Shaday — início">
+    <img class="brand__logo" src="assets/img/logo.png" width="640" height="635" alt="Recanto El Shaday">
+  </a>
+  <a class="header-cta" href="#contato" data-cta>Contato e reservas</a>
+</header>
+
+<main id="inicio">
+<section class="hero" aria-labelledby="hero-title">
+
+  <!-- ===== Fundo: vídeo + tratamentos ===== -->
+  <div class="hero__media" aria-hidden="true">
+    <video class="hero__video" autoplay muted loop playsinline preload="auto"
+           poster="assets/img/poster.jpg" disablepictureinpicture>
+      <source src="assets/video/piscina.webm" type="video/webm">
+      <source src="assets/video/piscina.mp4" type="video/mp4">
+    </video>
+    <div class="hero__grade"></div>
+    <div class="hero__caustics"></div>
+    <div class="hero__grain"></div>
+  </div>
+  <!-- Acabamento: luz do sol entrando, brilho que acompanha o ponteiro e partículas no ar -->
+  <div class="hero__sun" aria-hidden="true"></div>
+  <div class="hero__light" aria-hidden="true"></div>
+  <div class="hero__motes" aria-hidden="true">
+    <i style="--x:46%;--y:9%;--s:4px;--t:13s;--dl:.8s;--dx:-70px;--dy:60px"></i>
+    <i style="--x:58%;--y:22%;--s:3px;--t:11s;--dl:3s;--dx:-50px;--dy:44px;--b:.6px"></i>
+    <i style="--x:71%;--y:14%;--s:6px;--t:16s;--dl:1.6s;--dx:-90px;--dy:70px;--b:1.4px;--o:.55"></i>
+    <i style="--x:83%;--y:30%;--s:3px;--t:12s;--dl:5s;--dx:-60px;--dy:50px"></i>
+    <i style="--x:92%;--y:12%;--s:5px;--t:15s;--dl:2.4s;--dx:-80px;--dy:64px;--b:1px;--o:.6"></i>
+    <i style="--x:38%;--y:34%;--s:3px;--t:10s;--dl:6.5s;--dx:-40px;--dy:36px"></i>
+    <i style="--x:66%;--y:42%;--s:4px;--t:14s;--dl:4s;--dx:-66px;--dy:52px;--b:.8px"></i>
+    <i style="--x:78%;--y:6%;--s:7px;--t:18s;--dl:7s;--dx:-100px;--dy:80px;--b:2px;--o:.4"></i>
+  </div>
+
+  <!-- ===== Linhas gráficas e bolhas ===== -->
+  <svg class="hero__lines" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+    <path class="ln ln--a" d="M-20 640 C 240 580, 420 700, 700 640 S 1180 560, 1460 620"/>
+    <path class="ln ln--b" d="M-20 690 C 260 630, 460 750, 740 690 S 1200 610, 1460 670"/>
+    <path class="ln ln--c" d="M-20 740 C 280 680, 500 800, 780 740 S 1220 660, 1460 720"/>
+  </svg>
+  <div class="bubbles" aria-hidden="true">
+    <i style="--x:8%;--s:10px;--t:11s;--dl:0s"></i>
+    <i style="--x:22%;--s:6px;--t:9s;--dl:2s"></i>
+    <i style="--x:41%;--s:14px;--t:14s;--dl:4s"></i>
+    <i style="--x:63%;--s:8px;--t:10s;--dl:1s"></i>
+    <i style="--x:78%;--s:12px;--t:13s;--dl:5s"></i>
+    <i style="--x:91%;--s:7px;--t:9.5s;--dl:3s"></i>
+  </div>
+
+  <!-- Régua vertical lateral -->
+  <div class="hero__rail" aria-hidden="true" data-reveal style="--d:1.3s">
+    <span>Guarapuava · PR</span>
+  </div>
+
+  <!-- ===== Conteúdo principal ===== -->
+  <div class="hero__inner">
+
+    <div class="hero__top">
+      <div class="hero__tags" data-reveal style="--d:.25s">
+        <p class="badge">
+          <span class="badge__dot" aria-hidden="true"></span>
+          Um refúgio de lazer em Guarapuava–PR
+        </p>
+        <ul class="chips" aria-label="Estrutura">
+          <li>Piscina</li><li aria-hidden="true">•</li><li>Churrasqueira</li><li aria-hidden="true">•</li><li>Lazer</li>
+        </ul>
+      </div>
+
+      <h1 id="hero-title" class="hero__title">
+        <span class="ln-wrap"><span data-reveal style="--d:.4s">Seu próximo</span></span>
+        <span class="ln-wrap"><span data-reveal style="--d:.5s">momento <em>especial</em></span></span>
+        <span class="ln-wrap"><span data-reveal style="--d:.6s">começa aqui.</span></span>
+      </h1>
+    </div>
+
+    <div class="hero__bottom">
+    <div class="hero__copy">
+      <p class="hero__lead" data-reveal style="--d:.8s">
+        Piscina, churrasqueira e espaço de lazer para reunir quem importa, no ritmo que o dia pede.
+        Venha conhecer o Recanto El Shaday.
+      </p>
+
+      <div class="hero__actions" data-reveal style="--d:.95s">
+        <a class="btn" href="#contato" data-cta>
+          <span>Planejar minha visita</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+
+        <div class="hours" aria-label="Horário: das 10h às 23h">
+          <svg class="hours__dial" viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="20" class="hours__track"/>
+            <circle cx="24" cy="24" r="20" class="hours__arc" pathLength="24" stroke-dasharray="13 11" transform="rotate(-15 24 24)"/>
+            <circle cx="24" cy="24" r="2" class="hours__pin"/>
+          </svg>
+          <span class="hours__txt"><small>Horário</small><b>10h às 23h</b></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Cartões flutuantes (assimétricos) ===== -->
+    <div class="hero__cards" aria-hidden="false">
+
+      <article class="card card--1" data-reveal style="--d:1.0s" data-depth="14">
+        <span class="card__ico">
+          <svg viewBox="0 0 32 32"><path d="M3 20c3-3.5 5.5-3.5 8.5 0s5.500 3.500 8.500 0 5-3.500 9 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M3 26c3-3.500 5.500-3.500 8.500 0s5.500 3.500 8.500 0 5-3.500 9 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".55"/><path d="M21 4v10M14 4v10M14 8h7M14 12h7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+        <div><h2>Piscina</h2><p>Para mergulhar na calma do dia.</p></div>
+      </article>
+
+      <article class="card card--2" data-reveal style="--d:1.15s" data-depth="22">
+        <span class="card__ico">
+          <svg viewBox="0 0 32 32"><path d="M5 12h22M7 12c0 5 4 8 9 8s9-3 9-8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 25l3-5M22 25l-3-5M16 4c-1.500 2 1.500 3 0 5M11 5c-1 1.500 1 2.500 0 4M21 5c-1 1.500 1 2.500 0 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+        <div><h2>Churrasqueira</h2><p>Para reunir a turma à mesa.</p></div>
+      </article>
+
+      <article class="card card--3" data-reveal style="--d:1.3s" data-depth="10">
+        <span class="card__ico">
+          <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 3v4M16 25v4M3 16h4M25 16h4M7 7l2.800 2.800M22.200 22.200L25 25M25 7l-2.800 2.800M9.800 22.200L7 25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+        <div><h2>Lazer</h2><p>Para desacelerar ao ar livre.</p></div>
+      </article>
+
+      <!-- anel decorativo -->
+      <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 7"/>
+        <circle cx="100" cy="100" r="74" fill="none" stroke="currentColor" stroke-width="1" stroke-opacity=".5"/>
+      </svg>
+    </div>
+    </div>
+  </div>
+
+  <!-- Indicador de rolagem -->
+  <a class="scroll" href="#contato" aria-label="Rolar para contato" data-reveal style="--d:1.5s">
+    <span class="scroll__line"></span>
+  </a>
+
+  <!-- Onda de transição para a próxima seção -->
+  <svg class="hero__wave" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 40c120-34 240-34 360 0s240 34 360 0 240-34 360 0 240 34 360 0V80H0z" fill="var(--next-bg)"/>
+  </svg>
+</section>
+
+<!-- ==========================================================
+     ETAPA 2 — "Mais do que um lugar. Um dia para lembrar."
+     Seção autocontida: css/momento.css + js/momento.js + assets/img/momento-*.jpg
+     ========================================================== -->
+<section class="moment" id="momento" aria-labelledby="momento-title">
+
+  <!-- detalhes gráficos -->
+  <svg class="moment__deco moment__deco--waves" viewBox="0 0 1440 340" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M-20 150C240 90 420 210 700 150S1180 70 1460 130"/>
+    <path d="M-20 215C260 155 460 275 740 215S1200 135 1460 195"/>
+  </svg>
+  <svg class="moment__deco moment__deco--ring" viewBox="0 0 200 200" aria-hidden="true">
+    <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 7"/>
+    <circle cx="100" cy="100" r="74" fill="none" stroke="currentColor" stroke-width="1" stroke-opacity=".5"/>
+  </svg>
+
+  <div class="moment__wrap">
+
+    <!-- ===== Cabeçalho ===== -->
+    <header class="moment__head">
+      <div class="moment__title-box">
+        <p class="eyebrow" data-m>O dia no Recanto</p>
+        <h2 id="momento-title" class="moment__title" data-m style="--md:.08s">
+          <span>Mais do que um lugar.</span>
+          <span><em>Um dia para lembrar.</em></span>
+        </h2>
+      </div>
+      <div class="moment__aside" data-m style="--md:.2s">
+        <p class="moment__intro">Água azul, sombra boa e gente querida por perto. Aqui, o dia ganha o seu próprio ritmo.</p>
+      </div>
+    </header>
+
+    <!-- ===== 01 — Piscina ===== -->
+    <div class="m-pool">
+      <figure class="m-fig m-pool__aerial" data-m="img">
+        <span class="m-fig__img"><img src="assets/img/momento-aerea.jpg" width="1436" height="1072" loading="lazy" decoding="async" alt="Vista aérea da piscina, da área coberta e do gramado do Recanto El Shaday, cercados pela mata"></span>
+        <figcaption class="m-tag"><i aria-hidden="true"></i>Vista do alto</figcaption>
+      </figure>
+
+      <figure class="m-fig m-pool__vert m-par" data-m="img" data-speed="-.06" style="--md:.15s">
+        <span class="m-fig__img"><img src="assets/img/momento-piscina.jpg" width="766" height="1026" loading="lazy" decoding="async" alt="Piscina de água turquesa com espreguiçadeiras, palmeira e a área coberta ao fundo"></span>
+        <figcaption class="m-tag"><i aria-hidden="true"></i>Piscina</figcaption>
+      </figure>
+
+      <article class="m-block" data-m style="--md:.1s">
+        <svg class="m-pool__drop" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" stroke-dasharray="2 7"/><circle cx="100" cy="100" r="62" fill="none" stroke="currentColor" stroke-opacity=".6"/></svg>
+        <span class="m-num" aria-hidden="true">01</span>
+        <div>
+          <h3>A <em>piscina</em> no centro do dia</h3>
+          <p>Água turquesa, espreguiçadeiras à beira e o verde ao redor. Um mergulho, um mate na mão e nada para resolver.</p>
+          <ul class="m-list" aria-label="Na piscina">
+            <li>Mergulho</li><li>Espreguiçadeiras</li><li>Sol e verde</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <!-- ===== 02 — Convivência ===== -->
+    <div class="m-social">
+      <figure class="m-fig m-social__fig m-par" data-m="img" data-speed=".05">
+        <span class="m-fig__img"><img src="assets/img/momento-churrasqueira.jpg" width="490" height="798" loading="lazy" decoding="async" alt="Churrasqueira revestida em madeira na área coberta, com balcão e travessas de salgados e tortas"></span>
+        <figcaption class="m-tag"><i aria-hidden="true"></i>Churrasqueira</figcaption>
+      </figure>
+
+      <article class="m-block" data-m style="--md:.12s">
+        <span class="m-num" aria-hidden="true">02</span>
+        <h3>Onde a turma <em>se reúne</em></h3>
+        <p>Área coberta, churrasqueira e mesas ao ar livre. O lugar de esticar a conversa e repetir o prato.</p>
+        <ul class="m-list" aria-label="Na convivência">
+          <li>Churrasqueira</li><li>Área coberta</li><li>Mesas ao ar livre</li>
+        </ul>
+        <span class="m-social__rule" aria-hidden="true"></span>
+        <p class="m-social__note">Todo mundo junto, cada um no seu tempo.</p>
+      </article>
+    </div>
+
+    <!-- ===== 03 — Lazer + convite ===== -->
+    <div class="m-leisure">
+      <article class="m-block" data-m>
+        <span class="m-num" aria-hidden="true">03</span>
+        <h3>Lazer para <em>desacelerar</em></h3>
+        <p>Uma partida de sinuca na sombra, um gramado aberto e a mata ao fundo. O dia pede ritmo, não pressa.</p>
+        <ul class="m-list" aria-label="No lazer">
+          <li>Sinuca</li><li>Gramado</li><li>Ar livre</li>
+        </ul>
+      </article>
+
+      <figure class="m-fig m-leisure__fig m-par" data-m="img" data-speed="-.05" style="--md:.12s">
+        <span class="m-fig__img"><img src="assets/img/momento-sinuca.jpg" width="423" height="759" loading="lazy" decoding="async" alt="Mesa de sinuca na área coberta, com o gramado e as árvores ao fundo"></span>
+        <figcaption class="m-tag"><i aria-hidden="true"></i>Lazer</figcaption>
+      </figure>
+
+      <div class="m-leisure__cta" data-m>
+        <p>Seu próximo dia especial pode ser aqui.</p>
+        <a class="btn" href="#contato" data-cta>
+          <span>Planejar minha visita</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==========================================================
+     ETAPA 3 — Estrutura, ocasiões e diária
+     css/estrutura.css + js/estrutura.js + assets/img/estrutura-*.jpg
+     O CTA usa [data-cta]: o destino é definido em js/hero.js (CONTACT_TARGET)
+     ========================================================== -->
+<section class="est" id="estrutura" aria-labelledby="est-title">
+  <div class="est__wrap">
+
+    <header class="est__grid est__head">
+      <div data-e>
+        <p class="est__eyebrow">Estrutura e ocasiões</p>
+        <h2 id="est-title" class="est__title">Tudo para o seu dia <em>acontecer</em> com calma.</h2>
+      </div>
+      <p class="est__lead" data-e style="--ed:.12s">Espaço para quem chega cedo e fica até a noite, com o que importa já no lugar.</p>
+    </header>
+
+    <!-- Números -->
+    <div class="est__grid est__nums">
+      <div class="est__pool" data-e>
+        <p class="est__label">Piscina</p>
+        <span class="est__big">8 × 4<small>m</small></span>
+        <p class="est__pool-meta"><span>Profundidade de <b>1,40 m</b></span></p>
+        <svg class="est__diagram" viewBox="0 0 340 170" role="img" aria-label="Esquema da piscina: 8 metros de comprimento por 4 metros de largura">
+          <rect class="water" x="30" y="10" width="300" height="150" rx="6"/>
+          <path class="wave" d="M40 55c25-12 50 12 75 0s50-12 75 0 50 12 75 0 50-12 55-2"/>
+          <path class="wave" d="M40 95c25-12 50 12 75 0s50-12 75 0 50 12 75 0 50-12 55-2"/>
+          <path class="wave" d="M40 135c25-12 50 12 75 0s50-12 75 0 50 12 75 0 50-12 55-2"/>
+          <path class="dim" d="M30 168h300M30 163v10M330 163v10"/>
+          <path class="dim" d="M12 10v150M7 10h10M7 160h10"/>
+          <text x="180" y="165" text-anchor="middle" dy="-8" style="paint-order:stroke;stroke:#06303c;stroke-width:6px">8 M</text>
+          <text x="12" y="85" text-anchor="middle" transform="rotate(-90 12 85)" dy="-6" style="paint-order:stroke;stroke:#06303c;stroke-width:6px">4 M</text>
+        </svg>
+      </div>
+
+      <div class="est__cap">
+        <div class="est__cap-item" data-e style="--ed:.1s">
+          <p class="est__label">Área interna</p>
+          <span class="est__big">35<small>pessoas</small></span>
+          <p>Capacidade confortável de até 35 pessoas.</p>
+        </div>
+        <div class="est__cap-item" data-e style="--ed:.2s">
+          <p class="est__label">Área externa</p>
+          <span class="est__big">100<small>pessoas</small></span>
+          <p>Capacidade confortável de até 100 pessoas.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estrutura -->
+    <div class="est__grid est__struct">
+      <div class="est__struct-text" data-e>
+        <h3>O que você <em>encontra</em> por aqui</h3>
+        <ul class="est__index">
+          <li><div>Piscina<span>8 × 4 m, 1,40 m de profundidade</span></div></li>
+          <li><div>Edícula com churrasqueira</div></li>
+          <li><div>Mesas e cadeiras</div></li>
+          <li><div>Sinuca</div></li>
+          <li><div>Dois banheiros</div></li>
+          <li><div>Um quarto para descanso</div></li>
+          <li><div>Camping</div></li>
+          <li><div>Wi-Fi</div></li>
+        </ul>
+      </div>
+      <div class="est__photos" data-e style="--ed:.15s">
+        <figure class="est__fig est__fig--a">
+          <img src="assets/img/estrutura-quarto.jpg" width="382" height="512" loading="lazy" decoding="async" alt="Quarto para descanso com cama de casal, colcha florida e paredes azuis">
+          <figcaption>Quarto de descanso</figcaption>
+        </figure>
+        <figure class="est__fig est__fig--b">
+          <img src="assets/img/estrutura-mate.jpg" width="281" height="465" loading="lazy" decoding="async" alt="Mate em uma cuia azul à beira da piscina, com o gramado ao fundo">
+          <figcaption>Beira da piscina</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Ocasiões -->
+    <div class="est__occ" data-e>
+      <p class="est__eyebrow">Ocasiões</p>
+      <ul class="est__occ-words" aria-label="Ocasiões para o espaço">
+        <li>Aniversários</li><li>Churrascos</li><li>Confraternizações</li><li>Encontros familiares</li><li>Celebrações</li>
+      </ul>
+    </div>
+
+    <!-- Diária + convite -->
+    <div class="est__price" data-e>
+      <div class="est__price-main">
+        <p class="est__label">Diária</p>
+        <p class="est__amount" aria-label="850 reais"><sup>R$</sup>850</p>
+        <p class="est__hours"><i aria-hidden="true"></i>Das 10h às 23h</p>
+      </div>
+      <div class="est__cta">
+        <h3>Reserve a data do seu <em>dia para lembrar</em></h3>
+        <p>Consulte as condições de reserva e garanta o Recanto para a sua ocasião.</p>
+        <button type="button" class="btn rv-open" data-reserva-open aria-haspopup="dialog" aria-controls="reserva">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3.5 10h17M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Ver datas disponíveis</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <a class="btn" href="https://wa.me/5542988437189?text=Ol%C3%A1%21%20Tudo%20bem%3F%20%F0%9F%98%8A%20Conheci%20a%20Ch%C3%A1cara%20Recanto%20El%20Shaday%20pelo%20site%20e%20gostaria%20de%20consultar%20as%20condi%C3%A7%C3%B5es%20de%20reserva.%20Poderiam%20me%20passar%20as%20informa%C3%A7%C3%B5es%20e%20verificar%20a%20disponibilidade%20para%20a%20data%20que%20tenho%20em%20mente%3F" target="_blank" rel="noopener noreferrer">
+          <span>Consultar condições de reserva</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==========================================================
+     ETAPA 4 — Localização, reserva e regras  (id="contato")
+     Substitui a seção provisória de contato: todos os botões [data-cta]
+     (hero, etapa 2 e etapa 3) rolam até aqui via #contato.
+     css/reservas.css + js/reservas.js
+     ========================================================== -->
+<section class="rsv" id="contato" aria-labelledby="rsv-title">
+  <div class="rsv__wrap">
+
+    <header class="rsv__grid rsv__head">
+      <div data-r>
+        <p class="rsv__eyebrow">Localização e reservas</p>
+        <h2 id="rsv-title" class="rsv__title">Venha viver o seu <em>dia para lembrar.</em></h2>
+      </div>
+      <p class="rsv__lead" data-r style="--rd:.12s">Veja como chegar, como reservar e o que combinar antes de vir ao Recanto.</p>
+    </header>
+
+    <div class="rsv__grid rsv__main">
+
+      <!-- Localização -->
+      <div class="rsv__loc" data-r>
+        <svg class="rsv__topo" viewBox="0 0 700 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <path d="M-20 90C120 40 230 120 360 80S600 20 740 90"/>
+          <path d="M-20 130C130 80 240 170 370 120S610 60 740 130"/>
+          <path d="M-20 170C140 120 250 220 380 160S620 100 740 170"/>
+          <path d="M-20 215C150 165 260 270 390 205S630 145 740 215"/>
+          <path d="M-20 262C160 212 270 320 400 252S640 190 740 262"/>
+          <path d="M-20 312C170 262 280 370 410 300S650 240 740 312"/>
+          <path d="M-20 365C180 315 290 420 420 350S660 290 740 365"/>
+        </svg>
+        <svg class="rsv__pin" viewBox="0 0 64 80" aria-hidden="true">
+          <circle class="pulse" cx="32" cy="70" r="14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <ellipse cx="32" cy="70" rx="12" ry="4" fill="currentColor" opacity=".25"/>
+          <path d="M32 4C19 4 10 14 10 26c0 16 22 40 22 40s22-24 22-40C54 14 45 4 32 4z" fill="currentColor"/>
+          <circle cx="32" cy="26" r="8" fill="#eaf8f6"/>
+        </svg>
+
+        <div>
+          <p class="rsv__label">Como chegar</p>
+          <span class="rsv__city">Guarapuava<em>, PR</em></span>
+          <address class="rsv__addr">
+            <b>Estr. Junqueira - Jordão</b>
+            Guarapuava - PR, 85099-899
+          </address>
+        </div>
+
+        <a class="rsv__link" href="https://www.google.com/maps/search/?api=1&query=Estrada+Junqueira+Jord%C3%A3o%2C+Guarapuava%2C+PR%2C+85099-899" target="_blank" rel="noopener noreferrer">
+          <span>Abrir no Google Maps</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <!-- Reserva + WhatsApp -->
+      <div class="rsv__book" data-r style="--rd:.14s">
+        <p class="rsv__label">Reserva</p>
+        <h3>Garanta sua data <em>pelo WhatsApp</em></h3>
+        <ol class="rsv__steps" style="margin:0;padding:0;list-style:none">
+          <li data-n="01"><span>Sinal de <b>50%</b> para reservar a data.</span></li>
+          <li data-n="02"><span><b>Contrato digital</b> enviado e assinado pelo WhatsApp.</span></li>
+        </ol>
+        <button type="button" class="btn rv-open" data-reserva-open aria-haspopup="dialog" aria-controls="reserva">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3.5 10h17M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Ver datas disponíveis</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <a class="rsv__wa" href="https://wa.me/5542988437189" target="_blank" rel="noopener noreferrer">
+          <span>Chamar no WhatsApp<small>(42) 98843-7189</small></span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 0 0-7.7 13.6L3 21l4.5-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 8.5c0 3.5 3 6.500 6.500 6.500l1-1.800-2-1-.9.900c-1-.4-1.800-1.200-2.200-2.200l.9-.9-1-2z" fill="currentColor"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Fatos rápidos -->
+    <dl class="rsv__facts" data-r>
+      <div class="rsv__fact"><dt>Horário</dt><dd>10h <em>às</em> 23h<small>Pernoite deve ser combinado previamente.</small></dd></div>
+      <div class="rsv__fact"><dt>Sinal</dt><dd>50%<small>Para reservar, com contrato digital pelo WhatsApp.</small></dd></div>
+      <div class="rsv__fact"><dt>Limpeza</dt><dd>R$ 150<small>Taxa caso o espaço seja deixado sujo.</small></dd></div>
+    </dl>
+
+    <!-- Regras -->
+    <div class="rsv__grid rsv__rules">
+      <div class="rsv__rules-head" data-r>
+        <p class="rsv__eyebrow">Regras da casa</p>
+        <h3>Para todo mundo <em>aproveitar</em> melhor</h3>
+        <p>Combinados simples para o dia correr bem. Toque em cada item para ver os detalhes.</p>
+      </div>
+
+      <div class="rsv__acc" data-r style="--rd:.1s">
+        <details open>
+          <summary data-n="01">Horário e pernoite</summary>
+          <div class="rsv__panel"><p>A diária vai das <b>10h às 23h</b>. Pernoite deve ser combinado previamente.</p></div>
+        </details>
+        <details>
+          <summary data-n="02">Reserva e cancelamento</summary>
+          <div class="rsv__panel"><p>A reserva exige sinal de <b>50%</b> e contrato digital pelo WhatsApp. Cancelamentos seguem o que está previsto em contrato.</p></div>
+        </details>
+        <details>
+          <summary data-n="03">O que não é fornecido</summary>
+          <div class="rsv__panel">
+            <p>Não são fornecidos:</p>
+            <ul><li>utensílios</li><li>itens de higiene e papel higiênico</li><li>esponjas e sacos de lixo</li><li>produtos de limpeza</li></ul>
+          </div>
+        </details>
+        <details>
+          <summary data-n="04">Limpeza</summary>
+          <div class="rsv__panel"><p>Será cobrada <b>taxa de R$ 150</b> caso o espaço seja deixado sujo.</p></div>
+        </details>
+        <details>
+          <summary data-n="05">Danos e pertences</summary>
+          <div class="rsv__panel"><p>O locatário responde por danos, conforme contrato. Os pertences pessoais são de responsabilidade do visitante.</p></div>
+        </details>
+        <details>
+          <summary data-n="06">Piscina e crianças</summary>
+          <div class="rsv__panel"><p>Crianças devem ser supervisionadas por adultos na piscina.</p></div>
+        </details>
+        <details>
+          <summary data-n="07">Música e camping</summary>
+          <div class="rsv__panel"><p>Música é permitida dentro da lei. O camping é permitido apenas na área designada.</p></div>
+        </details>
+      </div>
+    </div>
+
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__in">
+    <a class="site-footer__brand" href="#inicio" aria-label="Chácara Recanto El Shaday — voltar ao início">
+      <img src="assets/img/logo.png" width="640" height="635" alt="" loading="lazy" decoding="async">
+      <span>Chácara Recanto El Shaday</span>
+    </a>
+    <address class="site-footer__addr">Estr. Junqueira - Jordão,<br>Guarapuava - PR</address>
+    <a class="site-footer__wa" href="https://wa.me/5542988437189" target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
+    <p class="site-footer__copy">© 2026 Chácara Recanto El Shaday. Todos os direitos reservados.</p>
+    <a class="site-footer__top" href="#inicio">↑ Voltar ao topo</a>
+  </div>
+</footer>
+
+<a class="m-cta" href="#contato" data-cta>Contato e reservas</a>
+
+<!-- ==========================================================
+     RESERVAS — modal com calendário (v1, sem banco de dados)
+     css/reserva-modal.css + js/reserva-modal.js
+     Aberto pelos botões [data-reserva-open]. As reservas ficam no banco compartilhado (Supabase) e a conversa segue pelo WhatsApp.
+     ========================================================== -->
+<div class="rv" id="reserva" role="dialog" aria-modal="true" aria-labelledby="rv-title" hidden>
+  <div class="rv__backdrop" data-rv-close></div>
+  <div class="rv__panel" tabindex="-1">
+
+    <header class="rv__head">
+      <div>
+        <p class="rv__eyebrow">Reservas</p>
+        <h2 class="rv__title" id="rv-title">Escolha a data do seu <em>dia para lembrar</em></h2>
+      </div>
+      <button type="button" class="rv__x" data-rv-close aria-label="Fechar reservas">&times;</button>
+    </header>
+
+    <div class="rv__body">
+
+      <!-- 1) Calendário + dados da reserva -->
+      <form class="rv__view" data-view="form" novalidate>
+        <div class="rv__cols">
+
+          <section class="rv__cal" aria-label="Calendário">
+            <div class="rv__navbar">
+              <button type="button" class="rv__nav" data-rv="prev" aria-label="Mês anterior">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <h3 class="rv__month" data-rv="month" aria-live="polite"></h3>
+              <button type="button" class="rv__nav" data-rv="next" aria-label="Próximo mês">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            <div class="rv__wk" aria-hidden="true"><span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span></div>
+            <div class="rv__grid" data-rv="grid"></div>
+            <ul class="rv__legend" aria-label="Legenda do calendário">
+              <li><i class="l-ok"></i>Disponível</li>
+              <li><i class="l-sel"></i>Entrada, saída e período</li>
+              <li><i class="l-booked"></i>Reservada / indisponível</li>
+              <li><i class="l-past"></i>Passada ou com menos de 24 h</li>
+            </ul>
+            <div class="rv__loaderr" data-rv="load-err" role="alert" hidden>
+              <p>Não foi possível carregar as datas disponíveis agora. Verifique sua conexão e tente novamente.</p>
+              <button type="button" class="rv__ghost" data-rv="retry">Tentar novamente</button>
+            </div>
+          </section>
+
+          <section class="rv__fields" aria-label="Dados da reserva">
+            <div class="rv__date" aria-live="polite">
+              <p class="rv__lbl">Período da reserva</p>
+              <p class="rv__date-v is-empty" data-rv="date-value">Selecione a data de entrada no calendário</p>
+              <p class="rv__date-v" data-rv="out-value" hidden></p>
+              <p class="rv__date-h" data-rv="date-hours" hidden>Diária das 10h às 23h</p>
+            </div>
+            <p class="rv__hint">Toque na data de entrada e, para mais de uma diária, na data de saída (a saída não é cobrada). Reservas exigem no mínimo 24 horas de antecedência.</p>
+
+            <div class="rv__guests">
+              <div class="rv__field">
+                <label for="rv-adults">Adultos<small>13 anos ou mais</small></label>
+                <div class="rv__step">
+                  <button type="button" class="rv__sbtn" data-step="adults" data-dir="-1" aria-label="Diminuir adultos">&minus;</button>
+                  <input id="rv-adults" class="rv__num" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" autocomplete="off" value="2" aria-invalid="false">
+                  <button type="button" class="rv__sbtn" data-step="adults" data-dir="1" aria-label="Aumentar adultos">+</button>
+                </div>
+              </div>
+              <div class="rv__field">
+                <label for="rv-children">Crianças<small>até 12 anos</small></label>
+                <div class="rv__step">
+                  <button type="button" class="rv__sbtn" data-step="children" data-dir="-1" aria-label="Diminuir crianças">&minus;</button>
+                  <input id="rv-children" class="rv__num" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3" autocomplete="off" value="0" aria-invalid="false">
+                  <button type="button" class="rv__sbtn" data-step="children" data-dir="1" aria-label="Aumentar crianças">+</button>
+                </div>
+              </div>
+            </div>
+            <p class="rv__hint">Capacidade confortável: até 100 pessoas (adultos + crianças).</p>
+
+            <label class="rv__check">
+              <input type="checkbox" id="rv-cleaning">
+              <span>Incluir taxa de limpeza — R$ 150,00</span>
+            </label>
+
+          </section>
+        </div>
+
+        <!-- Resumo sempre colado no botão de confirmação -->
+        <div class="rv__foot">
+          <p class="rv__msg" data-rv="msg" role="alert"></p>
+          <div class="rv__sum" aria-label="Valor atual da reserva">
+            <h3>Valor atual da reserva</h3>
+            <dl>
+              <div class="rv__row"><dt data-rv="s-daily-label">Valor da diária</dt><dd data-rv="s-daily">R$ 850,00</dd></div>
+              <div class="rv__row"><dt>Taxa de limpeza</dt><dd data-rv="s-cleaning">R$ 0,00</dd></div>
+              <div class="rv__row rv__row--total"><dt>Valor total</dt><dd data-rv="s-total" aria-live="polite">R$ 850,00</dd></div>
+            </dl>
+          </div>
+          <button type="button" class="btn rv__confirm" data-rv="confirm">
+            <span>Revisar minha reserva</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </form>
+
+      <!-- 2) Revisão + dados de contato -->
+      <form class="rv__view rv__pane" data-view="review" hidden novalidate autocomplete="on">
+        <h3>Revise sua reserva</h3>
+        <p>Confira os dados e informe seu contato. Ao confirmar, sua solicitação é registrada e abrimos o WhatsApp da chácara com tudo preenchido. A data só fica reservada depois da aprovação da chácara.</p>
+        <dl class="rv__recap" data-rv="recap"></dl>
+
+        <fieldset class="rv__contact">
+          <legend>Seus dados para contato</legend>
+          <p class="rv__req-note"><span class="rv__req" aria-hidden="true">*</span> campos obrigatórios</p>
+          <div class="rv__cf">
+            <label for="rv-name">Nome completo <span class="rv__req" aria-hidden="true">*</span><span class="rv__sr"> (obrigatório)</span></label>
+            <input id="rv-name" name="name" type="text" autocomplete="name" maxlength="120" required aria-required="true" aria-describedby="rv-name-err" placeholder="Seu nome e sobrenome">
+            <p class="rv__ferr" id="rv-name-err" data-rv="err-name" role="alert"></p>
+          </div>
+          <div class="rv__cf">
+            <label for="rv-phone">Telefone / WhatsApp <span class="rv__req" aria-hidden="true">*</span><span class="rv__sr"> (obrigatório)</span></label>
+            <input id="rv-phone" name="tel" type="tel" inputmode="tel" autocomplete="tel-national" maxlength="16" required aria-required="true" aria-describedby="rv-phone-err" placeholder="(42) 90000-0000">
+            <p class="rv__ferr" id="rv-phone-err" data-rv="err-phone" role="alert"></p>
+          </div>
+          <div class="rv__cf">
+            <label for="rv-email">E-mail <small>(opcional)</small></label>
+            <input id="rv-email" name="email" type="email" inputmode="email" autocomplete="email" maxlength="160" aria-describedby="rv-email-err" placeholder="voce@exemplo.com">
+            <p class="rv__ferr" id="rv-email-err" data-rv="err-email" role="alert"></p>
+          </div>
+          <div class="rv__hp" aria-hidden="true"><label>Não preencha <input type="text" name="website" tabindex="-1" autocomplete="off" data-rv="hp"></label></div>
+        </fieldset>
+
+        <p class="rv__fine">A data só é confirmada de forma definitiva depois da resposta da chácara pelo WhatsApp.</p>
+        <p class="rv__msg" data-rv="review-msg" role="alert"></p>
+        <div class="rv__actions">
+          <button type="submit" class="btn rv__wa" data-rv="submit"><span>Confirmar pelo WhatsApp</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2a9.93 9.93 0 0 0-8.5 15.1L2 22l5.05-1.32A9.94 9.94 0 1 0 12.04 2Zm0 1.8a8.14 8.14 0 1 1-4.15 15.14l-.3-.18-3 .78.8-2.92-.2-.31A8.14 8.14 0 0 1 12.04 3.8Zm-3.2 4.13c-.18 0-.47.07-.72.34-.25.27-.95.93-.95 2.27 0 1.34.97 2.63 1.11 2.81.14.18 1.9 3.05 4.69 4.15 2.32.91 2.79.73 3.29.68.5-.04 1.62-.66 1.85-1.3.23-.64.23-1.19.16-1.3-.07-.12-.25-.18-.52-.32-.27-.14-1.62-.8-1.87-.89-.25-.09-.43-.14-.62.14-.18.27-.7.89-.86 1.07-.16.18-.32.2-.59.07-.27-.14-1.16-.43-2.2-1.36-.81-.72-1.36-1.62-1.52-1.89-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.6-1.5-.85-2.05-.2-.48-.41-.49-.6-.5h-.5Z"/></svg>
+          </button>
+          <button type="button" class="rv__ghost" data-rv="back">Voltar e editar</button>
+        </div>
+      </form>
+
+      <!-- 3) Solicitação registrada (ainda NÃO é confirmação definitiva) -->
+      <div class="rv__view rv__pane" data-view="done" hidden>
+        <span class="rv__ok" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.500l4.500 4.500L19 7.500" fill="none" stroke="currentColor" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3 data-rv="done-title" tabindex="-1">Solicitação registrada</h3>
+        <p>Recebemos o seu pedido. A data ainda <b>não</b> está reservada: ela só fica bloqueada depois que a chácara aprovar. Se o WhatsApp não abriu, toque no botão abaixo e envie a mensagem para agilizar a resposta.</p>
+        <dl class="rv__recap" data-rv="done-recap"></dl>
+        <div class="rv__actions">
+          <a class="btn rv__wa" data-rv="done-wa" href="#" target="_blank" rel="noopener noreferrer"><span>Abrir o WhatsApp</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <button type="button" class="rv__ghost" data-rv-close>Fechar</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script src="js/hero.js" defer></script>
+<script src="js/momento.js" defer></script>
+<script src="js/estrutura.js" defer></script>
+<script src="js/reservas.js" defer></script>
+<!-- GSAP + ScrollTrigger (versão fixa, carregados uma única vez). Se falharem, o site segue visível e funcional. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="js/efeitos.js" defer></script>
+<script src="js/acabamento.js" defer></script>
+<script src="js/reservas-config.js" defer></script>
+<script src="js/reserva-modal.js" defer></script>
+</body>
+</html>

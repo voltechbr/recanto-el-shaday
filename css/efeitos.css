@@ -1,0 +1,77 @@
+/* =========================================================
+   Recanto El Shaday — Etapa 5: efeitos (loader, cursor, bolhas, rolagem)
+   Tudo aqui é aditivo: sem JS, nada some e nada bloqueia.
+   ========================================================= */
+
+/* ---------- Tela de carregamento ---------- */
+.loader{display:none}
+html.js-loader .loader{
+  position:fixed;inset:0;z-index:10000;display:grid;place-items:center;
+  padding:24px;text-align:center;color:var(--ink,#f4fdff);
+  background:
+    radial-gradient(60% 50% at 50% 38%,rgba(44,196,214,.22),transparent 70%),
+    linear-gradient(160deg,#072a33 0%,#04171d 70%);
+  transition:opacity .9s var(--ease,ease),transform 1.1s var(--ease,ease),visibility 0s linear .9s;
+  /* rede de segurança: some sozinho mesmo se o JS falhar */
+  animation:loaderFailsafe .01s linear 9s forwards;
+}
+html.js-loader .loader.is-leaving{opacity:0;transform:translateY(-3%);visibility:hidden;pointer-events:none}
+@keyframes loaderFailsafe{to{opacity:0;visibility:hidden;pointer-events:none}}
+html.has-loader,html.has-loader body{overflow:hidden}
+
+.loader__inner{display:flex;flex-direction:column;align-items:center;gap:0}
+.loader__brand{display:flex;flex-direction:column;align-items:center;gap:14px;color:var(--foam,#e9fbfd);
+  opacity:0;animation:lIn 1s var(--ease,ease) .1s forwards}
+.loader__mark{width:clamp(56px,9vw,76px);height:auto}
+.loader__name{display:flex;flex-direction:column;align-items:center;font-family:var(--ff-display);font-weight:500;
+  font-size:clamp(1.9rem,5.2vw,2.8rem);line-height:1.05;letter-spacing:.005em}
+.loader__name small{font-family:var(--ff-body);font-size:.66rem;font-weight:600;letter-spacing:.34em;text-transform:uppercase;opacity:.75;margin-bottom:8px}
+
+.loader__wave{display:block;width:min(260px,64vw);height:auto;margin-top:clamp(22px,4vh,34px);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(90deg,transparent,#000 22%,#000 78%,transparent);
+  opacity:0;animation:lIn .9s var(--ease,ease) .35s forwards}
+.loader__wave path{fill:none;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.loader__wave .w1{stroke:var(--aqua,#5fe3ef);stroke-width:2.2;animation:lWave 2.6s linear infinite}
+.loader__wave .w2{stroke:var(--aqua-2,#2cc4d6);stroke-width:1.6;opacity:.7;animation:lWave 3.8s linear infinite reverse}
+.loader__wave .w3{stroke:#bff6fb;stroke-width:1;opacity:.4;animation:lWave 5.2s linear infinite}
+@keyframes lWave{to{transform:translateX(-240px)}}
+
+.loader__tag{margin:clamp(18px,3vh,26px) 0 0;font-family:var(--ff-display);font-style:italic;font-weight:400;
+  font-size:clamp(1rem,2.6vw,1.2rem);letter-spacing:.04em;line-height:1.3;color:var(--sand,#f2d9a6);text-align:center;
+  opacity:0;transform:translateY(10px);filter:blur(4px);animation:lTag 1.2s var(--ease,ease) .95s forwards}
+@keyframes lIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes lTag{to{opacity:.95;transform:none;filter:none}}
+
+/* o hero espera o carregamento terminar para fazer sua entrada */
+html.has-loader [data-reveal]{animation-play-state:paused}
+
+/* ---------- Cursor de flamingo (somente mouse) ---------- */
+.flamingo{position:fixed;left:0;top:0;z-index:9998;width:52px;height:52px;pointer-events:none;opacity:0;
+  transition:opacity .25s;will-change:transform}
+.flamingo.is-on{opacity:1}
+.flamingo__body{display:block;width:100%;height:100%;transform:translate(-50%,-64%);transform-origin:50% 64%;
+  transition:transform .28s var(--ease,ease);filter:drop-shadow(0 8px 8px rgba(4,23,29,.28))}
+.flamingo svg{display:block;width:100%;height:100%;overflow:visible;animation:fBob 3.6s ease-in-out infinite}
+.flamingo.is-link .flamingo__body{transform:translate(-50%,-64%) scale(1.22) rotate(-8deg)}
+.flamingo.is-down .flamingo__body{transform:translate(-50%,-64%) scale(.88)}
+@keyframes fBob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-3px) rotate(2deg)}}
+html.has-flamingo,html.has-flamingo *{cursor:none!important}
+
+/* ---------- Bolhas de clique ----------
+   Turquesa com realce branco e borda mais escura: legíveis tanto no hero escuro quanto nas seções claras. */
+.fx-bubbles{position:fixed;inset:0;z-index:9997;pointer-events:none;overflow:hidden}
+.fx-bubbles i{position:absolute;left:0;top:0;border-radius:50%;will-change:transform,opacity;
+  border:2px solid #1fb9cc;
+  background:
+    radial-gradient(circle at 30% 26%,#fff 0 7%,rgba(255,255,255,.75) 8% 15%,transparent 17%),
+    radial-gradient(circle at 50% 55%,rgba(95,227,239,.42) 0,rgba(44,196,214,.62) 70%,rgba(12,140,160,.78) 100%);
+  box-shadow:inset 0 -3px 8px rgba(255,255,255,.45),0 0 0 1px rgba(5,70,84,.28),0 6px 18px rgba(20,170,190,.55)}
+.fx-bubbles i.ring{background:none;border:3px solid #35d0e2;box-shadow:0 0 18px rgba(44,196,214,.8),inset 0 0 12px rgba(95,227,239,.55)}
+.fx-bubbles i.splash{border:0;background:radial-gradient(closest-side,rgba(95,227,239,.55),rgba(44,196,214,.2) 60%,transparent);box-shadow:none}
+
+/* ---------- Profundidade nas fotos (ativada pelo JS em telas largas) ---------- */
+html.fx-depth .m-fig__img img,html.fx-depth .est__fig img{scale:1.14;translate:0 calc(var(--gy,0) * 1%)}
+
+@media (prefers-reduced-motion:reduce){
+  .loader,.flamingo svg{animation:none!important}
+}

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Painel — Recanto El Shaday</title>
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#06232b">
+  <!-- Só carrega scripts/estilos deste próprio site e só conversa com o Supabase. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://*.supabase.co; base-uri 'none'; form-action 'none'">
+  <link rel="icon" type="image/png" href="../assets/img/logo-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<noscript><p class="ad-noscript">Este painel precisa de JavaScript ativado.</p></noscript>
+
+<!-- ===================== LOGIN ===================== -->
+<main class="ad-login" id="tela-login" hidden>
+  <form class="ad-login__card" id="form-login" novalidate autocomplete="on">
+    <img class="ad-login__logo" src="../assets/img/logo-192.png" width="72" height="72" alt="">
+    <p class="ad-eyebrow">Recanto El Shaday</p>
+    <h1>Painel do proprietário</h1>
+    <p class="ad-login__lead">Entre com o e-mail e a senha de administrador.</p>
+
+    <div class="ad-field">
+      <label for="login-email">E-mail</label>
+      <input id="login-email" name="email" type="email" inputmode="email" autocomplete="username" autocapitalize="none" spellcheck="false" required maxlength="160">
+    </div>
+    <div class="ad-field">
+      <label for="login-senha">Senha</label>
+      <div class="ad-pw">
+        <input id="login-senha" name="password" type="password" autocomplete="current-password" required maxlength="200">
+        <button type="button" class="ad-pw__btn" id="btn-ver-senha" aria-label="Mostrar senha" aria-pressed="false">Mostrar</button>
+      </div>
+    </div>
+    <label class="ad-check"><input type="checkbox" id="login-manter"> <span>Manter conectado neste aparelho</span></label>
+    <p class="ad-msg" id="login-msg" role="alert"></p>
+    <button type="submit" class="ad-btn ad-btn--primary ad-btn--block" id="btn-entrar">Entrar</button>
+    <p class="ad-login__fine">Acesso restrito. Em computador compartilhado, deixe “Manter conectado” desmarcado.</p>
+  </form>
+</main>
+
+<!-- ===================== PAINEL ===================== -->
+<div class="ad-app" id="tela-app" hidden>
+  <header class="ad-top">
+    <div class="ad-top__brand">
+      <img src="../assets/img/logo-192.png" width="36" height="36" alt="">
+      <div><strong>Recanto El Shaday</strong><small>Painel do proprietário</small></div>
+    </div>
+    <div class="ad-top__right">
+      <span class="ad-top__upd" id="upd" aria-live="polite"></span>
+      <button type="button" class="ad-btn ad-btn--ghost ad-btn--sm" id="btn-atualizar">Atualizar</button>
+      <span class="ad-top__user" id="user-email"></span>
+      <button type="button" class="ad-btn ad-btn--ghost ad-btn--sm" id="btn-sair">Sair</button>
+    </div>
+  </header>
+
+  <nav class="ad-tabs" role="tablist" aria-label="Seções do painel">
+    <button role="tab" type="button" id="tab-cal"  aria-controls="pan-cal"  aria-selected="true"  data-tab="cal">Calendário</button>
+    <button role="tab" type="button" id="tab-sol"  aria-controls="pan-sol"  aria-selected="false" data-tab="sol" tabindex="-1">Solicitações <span class="ad-count" id="cnt-sol" hidden></span></button>
+    <button role="tab" type="button" id="tab-conf" aria-controls="pan-conf" aria-selected="false" data-tab="conf" tabindex="-1">Reservas confirmadas</button>
+  </nav>
+
+  <p class="ad-banner" id="banner" role="alert" hidden></p>
+
+  <main class="ad-main">
+    <!-- Calendário -->
+    <section role="tabpanel" id="pan-cal" aria-labelledby="tab-cal" class="ad-cal">
+      <div class="ad-cal__left">
+        <div class="ad-cal__bar">
+          <button type="button" class="ad-icon" id="cal-prev" aria-label="Mês anterior">‹</button>
+          <div class="ad-cal__title">
+            <label class="ad-sr" for="cal-mes">Ir para o mês</label>
+            <select id="cal-mes"></select>
+          </div>
+          <button type="button" class="ad-icon" id="cal-next" aria-label="Próximo mês">›</button>
+          <button type="button" class="ad-btn ad-btn--ghost ad-btn--sm" id="cal-hoje">Hoje</button>
+        </div>
+        <p class="ad-cal__sum" id="cal-resumo"></p>
+        <div class="ad-cal__wd" aria-hidden="true"><span>dom</span><span>seg</span><span>ter</span><span>qua</span><span>qui</span><span>sex</span><span>sáb</span></div>
+        <div class="ad-cal__grid" id="cal-grid" role="group" aria-label="Dias do mês"></div>
+        <ul class="ad-legend" aria-label="Legenda">
+          <li><i class="lg lg--livre"></i> Disponível</li>
+          <li><i class="lg lg--reservado"></i> Reservado (aprovado)</li>
+          <li><i class="lg lg--bloqueado"></i> Bloqueado</li>
+          <li><i class="lg lg--pend">2</i> Solicitações pendentes</li>
+        </ul>
+        <p class="ad-note">Solicitações pendentes <b>não</b> bloqueiam a data no site. Só reservas aprovadas e bloqueios manuais deixam a data indisponível para os visitantes.</p>
+
+        <details class="ad-period">
+          <summary>Bloquear um período (várias datas)</summary>
+          <form id="form-periodo" novalidate>
+            <div class="ad-row2">
+              <div class="ad-field"><label for="per-de">De</label><input type="date" id="per-de" required></div>
+              <div class="ad-field"><label for="per-ate">Até</label><input type="date" id="per-ate" required></div>
+            </div>
+            <div class="ad-field"><label for="per-motivo">Motivo (opcional)</label><input type="text" id="per-motivo" maxlength="200" placeholder="Ex.: manutenção, uso da família"></div>
+            <p class="ad-msg" id="per-msg" role="alert"></p>
+            <button type="submit" class="ad-btn ad-btn--primary">Bloquear período</button>
+          </form>
+        </details>
+      </div>
+
+      <aside class="ad-cal__right" id="dia-painel" aria-live="polite" aria-label="Detalhes do dia"></aside>
+    </section>
+
+    <!-- Solicitações -->
+    <section role="tabpanel" id="pan-sol" aria-labelledby="tab-sol" hidden>
+      <div class="ad-toolbar">
+        <div class="ad-chips" id="sol-filtros" role="group" aria-label="Filtrar solicitações"></div>
+        <div class="ad-field ad-search"><label class="ad-sr" for="sol-busca">Buscar</label><input type="search" id="sol-busca" placeholder="Buscar por nome ou telefone" maxlength="60" autocomplete="off"></div>
+      </div>
+      <div class="ad-list" id="sol-lista"></div>
+    </section>
+
+    <!-- Confirmadas -->
+    <section role="tabpanel" id="pan-conf" aria-labelledby="tab-conf" hidden>
+      <div class="ad-toolbar">
+        <div class="ad-chips" id="conf-filtros" role="group" aria-label="Período das reservas"></div>
+        <div class="ad-field ad-search"><label class="ad-sr" for="conf-busca">Buscar</label><input type="search" id="conf-busca" placeholder="Buscar por nome ou telefone" maxlength="60" autocomplete="off"></div>
+      </div>
+      <div class="ad-list" id="conf-lista"></div>
+    </section>
+  </main>
+</div>
+
+<!-- Confirmação -->
+<dialog class="ad-dlg" id="dlg" aria-labelledby="dlg-titulo">
+  <form method="dialog" id="dlg-form">
+    <h2 id="dlg-titulo"></h2>
+    <p id="dlg-texto"></p>
+    <div class="ad-field" id="dlg-motivo-wrap" hidden>
+      <label for="dlg-motivo" id="dlg-motivo-lbl">Motivo (opcional)</label>
+      <textarea id="dlg-motivo" rows="2" maxlength="300"></textarea>
+    </div>
+    <div class="ad-dlg__act">
+      <button type="button" class="ad-btn ad-btn--ghost" id="dlg-cancelar">Voltar</button>
+      <button type="submit" class="ad-btn ad-btn--primary" id="dlg-ok" value="ok">Confirmar</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="ad-toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="../js/reservas-config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

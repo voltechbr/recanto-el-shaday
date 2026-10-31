@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>Diagnóstico das reservas — El Shaday</title>
+<style>body{font:16px/1.5 system-ui,sans-serif;max-width:720px;margin:24px auto;padding:0 16px;background:#06303c;color:#e9fbfd}
+h1{font-size:1.3rem}li{margin:10px 0;padding:10px 12px;border-radius:10px;background:#04171d;list-style:none}
+.ok{border-left:6px solid #3ddc97}.no{border-left:6px solid #ff7b7b}.wait{border-left:6px solid #888}code{color:#f2d9a6;word-break:break-all}ul{padding:0}</style></head>
+<body><h1>Diagnóstico da conexão de reservas</h1>
+<p>Página só para o responsável. Não altera nada: apenas lê as datas ocupadas. Apague-a do servidor se preferir.</p>
+<ul id="out"></ul>
+<script src="js/reservas-config.js"></script>
+<script>
+(function(){
+  var out=document.getElementById('out');
+  function line(cls,msg){var li=document.createElement('li');li.className=cls;li.innerHTML=msg;out.appendChild(li);}
+  var c=window.ELSHADAY_SUPABASE||{}, url=String(c.url||'').replace(/\/+$/,''), key=String(c.anonKey||'');
+  if(!url||!key){line('no','<b>1. Configuração:</b> <code>js/reservas-config.js</code> está vazio. Preencha <code>url</code> e <code>anonKey</code> (Supabase → Project Settings → API).');return;}
+  if(!/^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(url)) line('no','<b>1. URL</b> parece incorreta: <code>'+url+'</code>. O formato é <code>https://SEUPROJETO.supabase.co</code> (sem /rest/v1 no final).');
+  else line('ok','<b>1. URL:</b> <code>'+url+'</code>');
+  if(/service_role|secret/i.test(key)||(key.indexOf('eyJ')===0&&(function(){try{return JSON.parse(atob(key.split('.')[1])).role==='service_role'}catch(e){return false}})())||/^sb_secret_/.test(key)) {line('no','<b>2. Chave:</b> esta é uma chave SECRETA. Troque agora pela chave pública <b>anon/publishable</b> e gere uma nova secreta no painel.');return;}
+  line('ok','<b>2. Chave pública:</b> preenchida ('+key.slice(0,12)+'…)');
+  var h={'Content-Type':'application/json','apikey':key}; if(key.indexOf('eyJ')===0)h.Authorization='Bearer '+key;
+  line('wait','<b>3.</b> Consultando <code>datas_indisponiveis()</code>…');
+  fetch(url+'/rest/v1/rpc/datas_indisponiveis',{method:'POST',headers:h,body:'{}',cache:'no-store'}).then(function(r){
+    return r.text().then(function(t){
+      var j;try{j=JSON.parse(t)}catch(e){j=null}
+      if(r.ok&&Array.isArray(j)){line('ok','<b>3. Leitura OK.</b> '+j.length+' data(s) ocupada(s) agora: <code>'+j.map(function(x){return x.data}).join(', ')+'</code>. O calendário deve carregar.');return;}
+      var code=j&&j.code, msg=(j&&j.message)||t;
+      var causa = (code==='PGRST202'||r.status===404)?'O <code>supabase/schema.sql</code> ainda não foi executado neste projeto (a função não existe). Rode-o inteiro no SQL Editor.'
+        : (r.status===401||r.status===403)?'Chave recusada. Copie de novo a chave <b>anon/publishable</b> do MESMO projeto da URL.'
+        : (r.status>=500)?'Erro no Supabase (projeto pausado?). Abra o painel e veja Logs → Postgres.' : 'Veja a mensagem abaixo.';
+      line('no','<b>3. Falhou: HTTP '+r.status+'</b> '+(code?'('+code+') ':'')+'<br><code>'+String(msg).replace(/</g,'&lt;')+'</code><br><b>Causa provável:</b> '+causa);
+    });
+  },function(e){line('no','<b>3. Sem resposta do servidor.</b> URL errada, sem internet ou bloqueio do navegador. Detalhe: <code>'+String(e).replace(/</g,'&lt;')+'</code>');});
+})();
+</script></body></html>
